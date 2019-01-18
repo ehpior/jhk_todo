@@ -1,0 +1,9 @@
+<a href="{% url 'todo:index' %}">Home?</a>
+
+    <h1>{{ todo.title }}</h1>
+    <p>{{ todo.content }}</p>
+    <p>{{ todo.deadline }}</p>
+    <p>{{ todo.complete }}</p>
+
+<a href="{% url 'todo:modify' todo.id %}">Modify?</a>
+<a href="{% url 'todo:delete' todo.id %}">Delete?</a>

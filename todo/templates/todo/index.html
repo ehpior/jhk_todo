@@ -7,10 +7,11 @@
     </head>
 
     <body>
+        <a href="/todo/create/">Create?</a><br>
         {% if todo_not %}
             <ul> 
                 {% for todo in todo_not %}
-                    <li>{{ todo }}</li>
+                    <li><a href="/todo/{{ todo.id }}">{{ todo }}</a></li>
                 {% endfor %}
             </ul>
         {% endif %}
@@ -18,7 +19,7 @@
         {% if todo_fin %}
             <ul> 
                 {% for todo in todo_fin %}
-                    <li>{{ todo }}</li>
+                    <li><a href="/todo/{{ todo.id }}">{{ todo }}</a></li>
                 {% endfor %}
             </ul>
         {% endif %}
