@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            JHK_Todo_App
+        </title>
+    </head>
+
+    <body>
+        {% if todo_not %}
+            <ul> 
+                {% for todo in todo_not %}
+                    <li>{{ todo }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+        {% if todo_fin %}
+            <ul> 
+                {% for todo in todo_fin %}
+                    <li>{{ todo }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </body>
+</html>
