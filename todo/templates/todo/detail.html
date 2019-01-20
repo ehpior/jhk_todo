@@ -1,9 +1,13 @@
-<a href="{% url 'todo:index' %}">Home?</a>
+{% extends "todo/base.html" %}
 
-    <h1>{{ todo.title }}</h1>
-    <p>{{ todo.content }}</p>
-    <p>{{ todo.deadline }}</p>
-    <p>{{ todo.complete }}</p>
+{% block content %}
+    <a href="{% url 'todo:index' %}">Home?</a>
 
-<a href="{% url 'todo:modify' todo.id %}">Modify?</a>
-<a href="{% url 'todo:delete' todo.id %}">Delete?</a>
+        <h1>{{ todo.title }}</h1>
+        <p>{{ todo.content }}</p>
+        <p>{{ todo.deadline }}</p>
+        <p>{{ todo.complete }}</p>
+
+    <a href="{% url 'todo:modify' todo.id %}">Modify?</a>
+    <a href="{% url 'todo:delete' todo.id %}">Delete?</a>
+{% endblock %}
