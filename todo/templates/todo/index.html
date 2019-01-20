@@ -1,26 +1,28 @@
 {% extends "todo/base.html" %}
-            {% block title %}JHK_Todo_App {% endblock %}
+
+    {% block title %}JHK_Todo_App {% endblock %}
+
 {% block content %}
-        <a href="/todo/create/">Create?</a><br><br><br><br>
-        수행중정리<br>
-        {% if todo_list %}
-            <ol> 
-                {% for todo in todo_notfin %}
-                    {% if todo in todo_over %}
-                        <li class="over" style="color:red;"><a href="/todo/{{ todo.id }}">{{ todo }}</a></li>
-                    {% else %}
-                        <li class="ing" style="color:green;"><a href="/todo/{{ todo.id }}">{{ todo }}</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ol>
-        {% endif %}
-        ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ<br>
-        수행완료<br>
-        {% if todo_fin %}
-            <ol> 
-                {% for todo in todo_fin %}
-                    <li><a href="/todo/{{ todo.id }}">{{ todo }}</a></li>
-                {% endfor %}
-            </ol>
-        {% endif %}
+    <a href="/todo/create/">Create?</a><br><br><br><br>
+    수행중정리<br>
+    {% if todo_list %}
+        <ol> 
+            {% for todo in todo_notfin %}
+                {% if todo in todo_over %}
+                    <li class="over" style="color:red;"><a href="/todo/{{ todo.id }}">{{ todo }}</a></li>
+                {% else %}
+                    <li class="ing" style="color:green;"><a href="/todo/{{ todo.id }}">{{ todo }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ol>
+    {% endif %}
+    ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ<br>
+    수행완료<br>
+    {% if todo_fin %}
+        <ol> 
+            {% for todo in todo_fin %}
+                <li><a href="/todo/{{ todo.id }}">{{ todo }}</a></li>
+            {% endfor %}
+        </ol>
+    {% endif %}
 {% endblock %}
