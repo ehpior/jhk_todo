@@ -10,7 +10,7 @@
         우선순위{{todo.priority_str}}<br>
         마감기한{{todo.deadline_str}}<br>
         생성날짜{{todo.published_str}}<br>
-        <a href='{{ todo.id }}/modify/'><i class="glyphicon glyphicon-pencil"></a></i></td>
-        <a href='{{ todo.id }}/delete/'><i class="glyphicon glyphicon-trash"></a></i></td>
+        <a href='{% url "todo:modify" todo.id %}'><i class="glyphicon glyphicon-pencil"></a></i></td>
+        <a href='{% url "todo:delete" todo.id %}'><i class="glyphicon glyphicon-trash"></a></i></td>
     </center>
 {% endblock %}

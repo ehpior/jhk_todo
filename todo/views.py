@@ -63,7 +63,8 @@ def modify(request,todo_id):
             Ttodo.objects.filter(pk=todo_id).update(title=k['title'],content=k['content'],deadline=k['deadline'])
         elif not k['deadline']:
             Ttodo.objects.filter(pk=todo_id).update(title=k['title'],content=k['content'],priority=k.get('priority'))
-        return HttpResponseRedirect(reverse('todo:detail',kwargs={'todo_id': todo_id}))
+        #return HttpResponseRedirect(reverse('todo:detail',kwargs={'todo_id': todo_id}))
+        return HttpResponseRedirect(reverse('todo:index'))
     return render(request, 'todo/modify.html', {'todo': todo,'todo_deadline': todo_deadline})
 
 
