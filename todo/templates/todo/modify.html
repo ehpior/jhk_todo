@@ -1,15 +1,21 @@
 {% extends "todo/base.html" %}
 
 {% block content %}
-    <form action="" method="post">
+    <h2>수정할 일</h2>
+    <form action="" method="post" style="margin:50px">
     {% csrf_token %}
+        <center>
         <label for="title">제목</label><br>
         <input type="text" name="title" id="title" value={{todo.title}}><br>
         <label for="deadline">날짜</label><br>
         <input type="date" name="deadline" id="deadline" value={{todo_deadline}}><br>
         <label for="content">내용</label><br>
         <input type="text" name="content" id="content" value={{todo.content}}><br>
-        
+        <label for="priority">우선순위</label><br>
+        <input type="radio" name="priority" id="priority" value='1' />여유<br>
+        <input type="radio" name="priority" id="priority" value='2' />보통<br>
+        <input type="radio" name="priority" id="priority" value='3' />긴급<br>
         <input type="submit" value="작성" />
+        </center>
     </form>
 {% endblock %}

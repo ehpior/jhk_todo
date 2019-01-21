@@ -1,28 +1,37 @@
 {% extends "todo/base.html" %}
 
-    {% block title %}JHK_Todo_App {% endblock %}
+{% block title %}JHK_Todo_App{% endblock %}
 
 {% block content %}
-    <a href="/todo/create/">Create?</a><br><br><br><br>
-    수행중정리<br>
-    {% if todo_list %}
-        <ol> 
-            {% for todo in todo_notfin %}
-                {% if todo in todo_over %}
-                    <li class="over" style="color:red;"><a href="/todo/{{ todo.id }}">{{ todo }}</a></li>
-                {% else %}
-                    <li class="ing" style="color:green;"><a href="/todo/{{ todo.id }}">{{ todo }}</a></li>
-                {% endif %}
-            {% endfor %}
-        </ol>
+    <h2>해야할 일</h2><br>
+    <center>
+    <table>
+        <tr>
+            <th>순번</th>
+            <th>우선순위</th>
+            <th>제목</th>
+            <th>마감 기한</th>
+            <th>생성 날짜</th>
+            <th>수정</th>
+            <th>삭제</th>
+        </tr>
+    {% if todo_notfin %}
+        {% for todo in todo_notfin %}
+            {% if todo in todo_over %}
+                <tr class="over">
+            {% else %}  
+                <tr class="ing">
+            {% endif %}
+            <td>{{ forloop.counter }}</td>
+            <td>{{ todo.priority_str }}</td>
+            <td><a href='{{ todo.id }}'>{{ todo.title }}</a></td>
+            <td>{{ todo.deadline_str }}</td>
+            <td>{{ todo.published_str }}</td>
+            <td><a href='{{ todo.id }}/modify/'><i class="glyphicon glyphicon-pencil"></a></i></td>
+            <td><a href='{{ todo.id }}/delete/'><i class="glyphicon glyphicon-trash"></a></i></td>
+        </tr>
+        {% endfor %}
     {% endif %}
-    ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ<br>
-    수행완료<br>
-    {% if todo_fin %}
-        <ol> 
-            {% for todo in todo_fin %}
-                <li><a href="/todo/{{ todo.id }}">{{ todo }}</a></li>
-            {% endfor %}
-        </ol>
-    {% endif %}
+    </table>
+    </center>
 {% endblock %}

@@ -1,13 +1,16 @@
 {% extends "todo/base.html" %}
 
+{% block title %}JHK_Todo_App{% endblock %}
+
 {% block content %}
-    <a href="{% url 'todo:index' %}">Home?</a>
-
-        <h1>{{ todo.title }}</h1>
-        <p>{{ todo.content }}</p>
-        <p>{{ todo.deadline }}</p>
-        <p>{{ todo.complete }}</p>
-
-    <a href="{% url 'todo:modify' todo.id %}">Modify?</a>
-    <a href="{% url 'todo:delete' todo.id %}">Delete?</a>
+    <h2>자세한 일</h2>
+    <center style="margin-top:50px">
+        제목{{todo.title}}<br>
+        내용{{todo.content}}<br>
+        우선순위{{todo.priority_str}}<br>
+        마감기한{{todo.deadline_str}}<br>
+        생성날짜{{todo.published_str}}<br>
+        <a href='{{ todo.id }}/modify/'><i class="glyphicon glyphicon-pencil"></a></i></td>
+        <a href='{{ todo.id }}/delete/'><i class="glyphicon glyphicon-trash"></a></i></td>
+    </center>
 {% endblock %}

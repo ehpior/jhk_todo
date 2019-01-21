@@ -26,18 +26,26 @@ def index(request):
     return render(request, 'todo/index.html', {'todo_fin': todo_fin,'todo_ing': todo_ing, 'todo_over': todo_over, 'todo_notfin': todo_notfin, 'todo_list': todo_list})
 
 
+def complete(request):
+    todo_fin = Ttodo.objects.filter(complete=True)
+
+    return render(request, 'todo/complete.html', {'todo_fin': todo_fin})
+
+
 def detail(request,todo_id):
     todo = get_object_or_404(Ttodo, pk=todo_id)
+
     return render(request, 'todo/detail.html', {'todo': todo})
 
 
 def create(request):
     if request.method == "POST":
         k = request.POST
-        if not k['deadline']:
-            new_Ttodo = Ttodo.objects.create(title=k['title'],content=k['content'])
-        else:
-            new_Ttodo = Ttodo.objects.create(title=k['title'],content=k['content'],deadline=k['deadline'])
+        if k['deadline']:
+            new_Ttodo = Ttodo.objects.create(title=k['title'],content=k['content'],deadline=k['deadline'],priority=k.get('priority'))
+        elif not k['deadline']:
+            new_Ttodo = Ttodo.objects.create(title=k['title'],content=k['content'],priority=k.get('priority'))
+
         return HttpResponseRedirect(reverse('todo:index'))
     return render(request, 'todo/create.html')
 
@@ -47,10 +55,14 @@ def modify(request,todo_id):
     todo_deadline = str(todo.deadline)
     if request.method == "POST":
         k = request.POST
-        if k['deadline']=='':
+        if k['deadline'] and k['priority']:
+            Ttodo.objects.filter(pk=todo_id).update(title=k['title'],content=k['content'],deadline=k['deadline'],priority=k.get('priority'))
+        elif not k['deadline'] and not k.get('priority'):
             Ttodo.objects.filter(pk=todo_id).update(title=k['title'],content=k['content'])
-        else:
+        elif not k.get('priority'):
             Ttodo.objects.filter(pk=todo_id).update(title=k['title'],content=k['content'],deadline=k['deadline'])
+        elif not k['deadline']:
+            Ttodo.objects.filter(pk=todo_id).update(title=k['title'],content=k['content'],priority=k.get('priority'))
         return HttpResponseRedirect(reverse('todo:detail',kwargs={'todo_id': todo_id}))
     return render(request, 'todo/modify.html', {'todo': todo,'todo_deadline': todo_deadline})
 

@@ -1,0 +1,33 @@
+{% extends "todo/base.html" %}
+
+{% block title %}JHK_Todo_App {% endblock %}
+
+{% block content %}
+    <h2>완료한 일</h2><br>
+    <center>
+    <table>
+        <tr>
+            <th>순번</th>
+            <th>우선순위</th>
+            <th>제목</th>
+            <th>마감 기한</th>
+            <th>생성 날짜</th>
+            <th>수정</th>
+            <th>삭제</th>
+        </tr>
+    {% if todo_fin %}
+        {% for todo in todo_fin %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ todo.priority_str }}</td>
+            <td>{{ todo.title }}</td>
+            <td>{{ todo.deadline_str }}</td>
+            <td>{{ todo.published_str }}</td>
+            <td><a href='{{ todo.id }}/modify/'><i class="glyphicon glyphicon-pencil"></i></td>
+            <td><a href='{{ todo.id }}/delete/'><i class="glyphicon glyphicon-trash"></i></td>
+        </tr>
+        {% endfor %}
+    {% endif %}
+    </table>
+    </center>
+{% endblock %}
