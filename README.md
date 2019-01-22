@@ -14,7 +14,7 @@
 
     - git clone https://github.com/ehpior/jhk_todo.git
     - cd jhk_todo/
-    - python manage.py runserver
+    - python3 manage.py runserver
 
 
 3. Access on Browser(Google Chrome)
