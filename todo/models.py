@@ -17,7 +17,7 @@ class Ttodo(models.Model):
             return "긴급"
     def deadline_str(self):
         if not self.deadline:
-            return 'none'
+            return ''
         else:
             return datetime.strftime(self.deadline,'%Y-%m-%d')
     def published_str(self):

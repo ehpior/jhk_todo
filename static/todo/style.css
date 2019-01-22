@@ -1,4 +1,16 @@
+html, body{
+	height:100%;
+}
+html{
+	overflow-y:scroll;
+}
+.wrap{
+	min-height:100%;
+	position:relative;
+	padding-bottom: 450px;
+}
 nav ul{
+	z-index: 100;
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
@@ -14,8 +26,57 @@ nav li{
 nav li a{
 	display: inline-block;
 	font-weight:bold;
-	font-size: 18px;
+	font-size: 30px;
 	text-align: center;
-	padding: 15px 15px;
+	padding: 10px 20px;
 	height: 100%;
+}
+nav li a:link{
+	color: #3DB7CC;
+}
+nav li a:visited{
+	color: #3DB7CC;
+}
+nav li a:hover{
+	background-color: grey;
+}
+table{
+	margin: 20px;
+	width: 70%;
+	border: 1px solid #ccc;
+	text-align-last: center;
+}
+th, td{
+	padding: 15px 30px;
+}
+th{
+	border-bottom: 3px solid #369;
+}
+.footer{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	background-color: #5D5D5D;
+	color: rgb(25, 25, 25);
+}
+.footer-2{
+	background-color: #252525;
+	color: rgb(218, 218, 218);
+}
+.footer_title, .footer_content{
+	padding:10px 20px;
+}
+h2{
+	background-color: black;
+	padding-left:50px;
+	padding-top:30px;
+}
+
+footer a:link{
+	color: rgb(25, 25, 25);
+}
+
+footer a:visited{
+	color: rgb(25, 25, 25);
+	text-decoration: none;
 }

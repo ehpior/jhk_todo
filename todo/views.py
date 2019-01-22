@@ -31,6 +31,15 @@ def complete(request):
 
     return render(request, 'todo/complete.html', {'todo_fin': todo_fin})
 
+def make_complete(request,todo_id):
+    todo = get_object_or_404(Ttodo, pk=todo_id)
+    if todo.complete:
+        Ttodo.objects.filter(pk=todo_id).update(complete=False)
+        return HttpResponseRedirect(reverse('todo:complete'))
+    else:
+        Ttodo.objects.filter(pk=todo_id).update(complete=True)
+        return HttpResponseRedirect(reverse('todo:index'))
+
 
 def detail(request,todo_id):
     todo = get_object_or_404(Ttodo, pk=todo_id)
@@ -52,10 +61,9 @@ def create(request):
 
 def modify(request,todo_id):
     todo = get_object_or_404(Ttodo, pk=todo_id)
-    todo_deadline = str(todo.deadline)
     if request.method == "POST":
         k = request.POST
-        if k['deadline'] and k['priority']:
+        if k['deadline'] and k.get('priority'):
             Ttodo.objects.filter(pk=todo_id).update(title=k['title'],content=k['content'],deadline=k['deadline'],priority=k.get('priority'))
         elif not k['deadline'] and not k.get('priority'):
             Ttodo.objects.filter(pk=todo_id).update(title=k['title'],content=k['content'])
@@ -63,9 +71,8 @@ def modify(request,todo_id):
             Ttodo.objects.filter(pk=todo_id).update(title=k['title'],content=k['content'],deadline=k['deadline'])
         elif not k['deadline']:
             Ttodo.objects.filter(pk=todo_id).update(title=k['title'],content=k['content'],priority=k.get('priority'))
-        #return HttpResponseRedirect(reverse('todo:detail',kwargs={'todo_id': todo_id}))
         return HttpResponseRedirect(reverse('todo:index'))
-    return render(request, 'todo/modify.html', {'todo': todo,'todo_deadline': todo_deadline})
+    return render(request, 'todo/modify.html', {'todo': todo})
 
 
 def delete(request,todo_id):

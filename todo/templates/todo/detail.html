@@ -3,14 +3,40 @@
 {% block title %}JHK_Todo_App{% endblock %}
 
 {% block content %}
-    <h2>자세한 일</h2>
-    <center style="margin-top:50px">
-        제목{{todo.title}}<br>
-        내용{{todo.content}}<br>
-        우선순위{{todo.priority_str}}<br>
-        마감기한{{todo.deadline_str}}<br>
-        생성날짜{{todo.published_str}}<br>
-        <a href='{% url "todo:modify" todo.id %}'><i class="glyphicon glyphicon-pencil"></a></i></td>
-        <a href='{% url "todo:delete" todo.id %}'><i class="glyphicon glyphicon-trash"></a></i></td>
+    <h2><i class="fa fa-align-justify"></i> 자세한 일</h2><br><br>
+    <center>
+       <table class="table_create">
+            <tr>
+                <th>
+                    <label for="title">제목</label><br>
+                </th><td class="table_create_title">
+                    {{todo.title}}</div><br>
+                </td>
+            </tr><tr>
+                <th>
+                    <label for="deadline">날짜</label><br>
+                </th><td class="table_create_deadline">
+                    {{todo.deadline_str}}</div><br>
+                </td>
+            </tr><tr>
+                <th>
+                    <label for="content">내용</label><br>
+                </th><td class="table_create_content">
+                    {{todo.content}}</div><br>
+                </td>
+            </tr><tr>
+                <th>
+                    <label for="priority">우선순위</label><br>
+                </th><td class="table_create_priority">
+                    {{todo.priority_str}}
+                </td>
+            </tr><tr>
+                <td colspan="2" class="table_create_submit">
+                    <a href='{% url "todo:modify" todo.id %}'><i class="fa fa-pencil"> 수정하기</i></a>&nbsp;&nbsp;
+                    <a href='{% url "todo:delete" todo.id %}'><i class="fa fa-trash-o"> 삭제하기</i></a>&nbsp;&nbsp;
+                    <a href='{% url "todo:make_complete" todo.id %}'><i class="fa fa-check"> /&nbsp;</i><i class="fa fa-times"> 완료반전</i></a>&nbsp;&nbsp;
+                </td>
+            </tr>
+        </table>
     </center>
 {% endblock %}

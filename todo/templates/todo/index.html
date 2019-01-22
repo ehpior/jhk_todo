@@ -3,34 +3,46 @@
 {% block title %}JHK_Todo_App{% endblock %}
 
 {% block content %}
-    <h2>해야할 일</h2><br>
+    <h2><i class="fa fa-align-justify"></i> 해야할 일</h2><br>
     <center>
-    <table>
+    <table class="table_list">
         <tr>
-            <th>순번</th>
-            <th>우선순위</th>
-            <th>제목</th>
-            <th>마감 기한</th>
-            <th>생성 날짜</th>
-            <th>수정</th>
-            <th>삭제</th>
+            <th class="th_list_no">순번</th>
+            <th class="th_list_priority">우선<br>순위</th>
+            <th class="th_list_title">제목</th>
+            <th class="th_list_deadline">마감 기한<br><div style="background-color:#E6BDBD">마감 초과</div></th>
+            <th class="th_list_pubdate">생성 날짜</th>
+            <th class="th_list_modify">수정</th>
+            <th class="th_list_delete">삭제</th>
+            <th class="th_list_complete">완료<br>처리</th>
         </tr>
     {% if todo_notfin %}
         {% for todo in todo_notfin %}
             {% if todo in todo_over %}
                 <tr class="over">
-            {% else %}  
+            {% else %}
                 <tr class="ing">
             {% endif %}
-            <td>{{ forloop.counter }}</td>
-            <td>{{ todo.priority_str }}</td>
-            <td><a href='{{ todo.id }}'>{{ todo.title }}</a></td>
+            <td class="td_list_no">{{ forloop.counter }}</td>
+            <td>
+            {% if todo.priority == 1 %}
+                <div class="pri_1">여유
+            {% elif todo.priority == 2 %}
+                <div class="pri_2">보통
+            {% else %}
+                <div class="pri_3">긴급
+            {% endif %}
+            </div></td>
+            <td><a href='{% url "todo:detail" todo.id %}'>{{ todo.title }}</a></td>
             <td>{{ todo.deadline_str }}</td>
             <td>{{ todo.published_str }}</td>
-            <td><a href='{{ todo.id }}/modify/'><i class="glyphicon glyphicon-pencil"></a></i></td>
-            <td><a href='{{ todo.id }}/delete/'><i class="glyphicon glyphicon-trash"></a></i></td>
+            <td class='mdc'><a href='{{ todo.id }}/modify/'><i class="fa fa-pencil"></i></a></td>
+            <td class='mdc'><a href='{{ todo.id }}/delete/'><i class="fa fa-trash-o"></i></a></td>
+            <td class='mdc'><a href='{% url "todo:make_complete" todo.id %}'><i class="fa fa-check"></i></a></td>
         </tr>
         {% endfor %}
+    {% else %}
+        <tr><td class="td_list_no" colspan='8'>할 일을 등록해주세요.</td></tr>
     {% endif %}
     </table>
     </center>

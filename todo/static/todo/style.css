@@ -7,7 +7,10 @@ html{
 .wrap{
 	min-height:100%;
 	position:relative;
-	padding-bottom: 450px;
+	padding-bottom: 270px;
+}
+.mdc a{
+	font-size:20px;
 }
 nav ul{
 	z-index: 100;
@@ -26,35 +29,155 @@ nav li{
 nav li a{
 	display: inline-block;
 	font-weight:bold;
-	font-size: 20px;
+	font-size: 30px;
 	text-align: center;
-	padding: 15px 15px;
+	padding: 10px 20px;
 	height: 100%;
 }
-table{
+nav li a:link{
+	color: #3DB7CC;
+}
+nav li a:visited{
+	color: #3DB7CC;
+}
+nav li a:hover{
+	background-color: grey;
+}
+h2{
+	padding-left:40px;
+	padding-top:50px;
+}
+.table_list{
 	margin: 20px;
-	width: 70%;
 	border: 1px solid #ccc;
 	text-align-last: center;
 }
-th, td{
-	padding: 15px 30px;
+.table_list th, .table_list td{
+	padding: 0px 0px;
 }
-th{
+.table_list th{
 	border-bottom: 3px solid #369;
+}
+.table_create{
+	text-align : center;
+}
+.table_create th, .table_create td{
+	text-align : center;
+	border: 1px solid #ccc;
+	border-collapse: collapse;
+}
+.table_create th{
+	width: 90px;
+}
+.table_create td{
+	width: 250px;
+}
+.table_create_title{
+	height : 70px;
+}
+.table_create_deadline{
+	height : 70px;
+}
+.table_create_content{
+	height : 130px;
+}
+.table_create_priority{
+	height : 70px;
+}
+.table_create_submit{
+	height : 50px;
+}
+.input_create{
+	width:90%;
+	height:80%;
+}
+.th_list_no, .td_list_no{
+	width: 80px;
+	height: 60px;
+}
+.th_list_priority{
+	width: 80px;
+}
+.th_list_title{
+	width: 250px;
+}
+.th_list_deadline{
+	width: 120px;
+}
+.th_list_pubdate{
+	width: 120px;
+}
+.th_list_modify{
+	width: 80px;
+}
+.th_list_delete{
+	width: 80px;
+}
+.th_list_complete{
+	width: 80px;
+}
+.over td{
+	background-color: #E6BDBD;
 }
 .footer{
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	background-color: grey;
+	background-color: #333;
+	color: #8C8C8C;
+}
+.footer_1{
+	padding:20px 0px;
+}
+.footer a:link{
+	color: #8C8C8C;
+	text-decoration: none;
+	border: 1px solid #8C8C8C;
+	padding: 3px;
+}
+.footer a:visited{
+	color: #8C8C8C;
+	text-decoration: none;
+	border: 1px solid #8C8C8C;
+	padding: 3px;
+}
+.footer_1 .about{
+	display: inline-block;
+	width: 35%;
+}
+.footer_1 .github{
+	vertical-align: top;
+	display: inline-block;
+	text-align: center;
+	width: 25%;
+}
+.footer_1 .contact{
+	vertical-align: top;
+	display: inline-block;
+	text-align: center;
+	width: 25%;
+}
+.footer_2{
+	background-color: #252525;
+	color: rgb(218, 218, 218);
+	padding: 10px 0px;
+	min-height: 40px;
+}
+.footer_1 h4{
+	vertical-align: top;
 }
 .footer_title, .footer_content{
-	padding:10px 20px;
+	padding:5px 20px;
 }
-h2{
-	padding-left:30px;
-	padding-top:30px;
-	text-decoration: underline;
-	text-decoration-color: #369;
+.pri_1, .pri_2, .pri_3{
+	padding: 5px 0px;
+}
+.pri_1{
+	border: 2px solid green;
+}
+.pri_2{
+	border: 2px solid black;
+}
+.pri_3{
+	border: 2px solid red;
 }

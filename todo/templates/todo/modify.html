@@ -1,21 +1,43 @@
 {% extends "todo/base.html" %}
 
 {% block content %}
-    <h2>수정할 일</h2>
-    <form action="" method="post" style="margin:50px">
+    <h2><i class="fa fa-align-justify"></i> 수정할 일</h2><br><br>
+    <form action="" method="post">
     {% csrf_token %}
         <center>
-        <label for="title">제목</label><br>
-        <input type="text" name="title" id="title" value={{todo.title}}><br>
-        <label for="deadline">날짜</label><br>
-        <input type="date" name="deadline" id="deadline" value={{todo_deadline}}><br>
-        <label for="content">내용</label><br>
-        <input type="text" name="content" id="content" value={{todo.content}}><br>
-        <label for="priority">우선순위</label><br>
-        <input type="radio" name="priority" id="priority" value='1' />여유<br>
-        <input type="radio" name="priority" id="priority" value='2' />보통<br>
-        <input type="radio" name="priority" id="priority" value='3' />긴급<br>
-        <input type="submit" value="작성" />
+        <table class="table_create">
+            <tr>
+                <th>
+                    <label for="title">제목</label><br>
+                </th><td class="table_create_title">
+                    <input type="text" name="title" id="title" class="input_create" value="{{todo.title}}"/><br>
+                </td>
+            </tr><tr>
+                <th>
+                    <label for="deadline">날짜</label><br>
+                </th><td class="table_create_deadline">
+                    <input type="date" name="deadline" id="deadline" class="input_create" value="{{todo.deadline_str}}"/><br>
+                </td>
+            </tr><tr>
+                <th>
+                    <label for="content">내용</label><br>
+                </th><td class="table_create_content">
+                    <textarea type="text" name="content" id="content" class="input_create" >{{todo.content}}</textarea><br>
+                </td>
+            </tr><tr>
+                <th>
+                    <label for="priority">우선순위</label><br>
+                </th><td class="table_create_priority">
+                    <input type="radio" name="priority" id="priority" value="1" />&nbsp;여유&nbsp;&nbsp;
+                    <input type="radio" name="priority" id="priority" value='2' /> &nbsp;보통&nbsp;&nbsp;
+                    <input type="radio" name="priority" id="priority" value='3' />&nbsp;긴급<br>
+                </td>
+            </tr><tr>
+                <td colspan="2" class="table_create_submit"><center>
+                    <input type="submit" value="작성" style="width:70px;"/>
+                </td></center>
+            </tr>
+        </table>
         </center>
     </form>
 {% endblock %}
