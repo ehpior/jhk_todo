@@ -91,6 +91,9 @@ h2{
 	width:90%;
 	height:80%;
 }
+th,td{
+	text-align: center;
+}
 .th_list_no, .td_list_no{
 	width: 80px;
 	height: 60px;
